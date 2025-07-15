@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wasib Mehmood | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #011f4b;
+      --secondary-color: #03396c;
+      --accent-color: #005b96;
+      --text-color: #333;
+      --light-bg: #f8f9fa;
+      --white: #ffffff;
+      --gradient: linear-gradient(135deg, #011f4b 0%, #03396c 100%);
+      --shadow: 0 10px 30px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: var(--light-bg);
+      color: var(--text-color);
+      transition: var(--transition);
+    }
+    .dark-mode {
+      --primary-color: #005b96;
+      --secondary-color: #03396c;
+      --accent-color: #011f4b;
+      --text-color: #d4d4d4;
+      --light-bg: #1e1e1e;
+      --white: #23272e;
+      --gradient: linear-gradient(135deg, #011f4b 0%, #03396c 100%);
+    }
+    header {
+      background: var(--gradient);
+      color: #fff;
+      padding: 2rem 0 1.5rem 0;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(34,34,59,0.08);
+      position: relative;
+    }
+    .dark-mode header {
+      background: var(--gradient);
+      color: var(--primary-color);
+    }
+    .hero {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--secondary-color);
+      box-shadow: 0 4px 24px rgba(34,34,59,0.15);
+      margin-bottom: 1.2rem;
+      background: #fff;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      margin: 0.2em 0 0.1em 0;
+      letter-spacing: 2px;
+    }
+    .hero p {
+      font-size: 1.3rem;
+      color: #c9ada7;
+      margin-bottom: 1.2em;
+    }
+    .links a {
+      display: inline-block;
+      margin: 0 0.7em;
+      color: #f2e9e4;
+      background: var(--primary-color);
+      padding: 0.5em 1.2em;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .links a:hover {
+      background: var(--accent-color);
+      color: #fff;
+    }
+    .dark-mode .links a {
+      background: #23272e;
+      color: var(--primary-color);
+    }
+    .dark-mode .links a:hover {
+      background: var(--primary-color);
+      color: #23272e;
+    }
+    .dark-toggle {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      background: var(--white);
+      color: var(--primary-color);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(34,34,59,0.08);
+      transition: var(--transition);
+    }
+    .dark-mode .dark-toggle {
+      background: #23272e;
+      color: var(--primary-color);
+    }
+    main {
+      max-width: 900px;
+      margin: 2.5rem auto;
+      background: var(--white);
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(34,34,59,0.07);
+      padding: 2.5rem 2rem 2rem 2rem;
+    }
+    .dark-mode main {
+      background: #23272e;
+      color: #d4d4d4;
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      color: var(--secondary-color);
+      margin-bottom: 0.7em;
+      font-size: 2rem;
+      border-left: 5px solid var(--accent-color);
+      padding-left: 0.5em;
+    }
+    .dark-mode h2 {
+      color: var(--primary-color);
+      border-left: 5px solid var(--secondary-color);
+    }
+    /* Education */
+    .education-card {
+      background: var(--light-bg);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(34,34,59,0.04);
+      padding: 1.5rem 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .edu-details {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .edu-detail {
+      flex: 1 1 120px;
+      text-align: center;
+    }
+    .edu-detail .number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--secondary-color);
+    }
+    .edu-detail .label {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .dark-mode .education-card {
+      background: #1e1e1e;
+    }
+    /* Certifications */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .cert-card {
+      background: var(--light-bg);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(34,34,59,0.04);
+      padding: 1.2rem 1rem;
+      transition: transform 0.15s;
+    }
+    .cert-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 6px 18px rgba(34,34,59,0.10);
+    }
+    .cert-card a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .cert-card a:hover {
+      text-decoration: underline;
+    }
+    .dark-mode .cert-card {
+      background: #23272e;
+    }
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--light-bg);
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(34,34,59,0.04);
+      padding: 1.2rem 1rem;
+      transition: transform 0.15s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 6px 18px rgba(34,34,59,0.10);
+    }
+    .dark-mode .project-card {
+      background: #23272e;
+    }
+    .project-card h3 {
+      margin-top: 0;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+    .project-card p {
+      color: #4a4e69;
+      font-size: 1rem;
+    }
+    .dark-mode .project-card h3 {
+      color: var(--primary-color);
+    }
+    .contact {
+      text-align: center;
+    }
+    .contact a {
+      color: var(--secondary-color);
+      text-decoration: underline;
+    }
+    .dark-mode .contact a {
+      color: var(--primary-color);
+    }
+    @media (max-width: 600px) {
+      main {
+        padding: 1.2rem 0.5rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.3rem;
+      }
+      .edu-details {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button class="dark-toggle" id="darkModeToggle" title="Toggle dark mode">🌙</button>
+    <div class="hero">
+      <img src="WASIB.jpg" alt="Wasib Mehmood" class="profile-img" />
+      <h1>Wasib Mehmood</h1>
+      <p>Data Enthusiast | Aspiring Data Analyst | Problem Solver</p>
+      <div class="links">
+        <a href="https://www.linkedin.com/in/wasib-mehmood/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/WasibMehmood" target="_blank">GitHub</a>
+        <a href="https://drive.google.com/file/d/101cl9yrJf8CgDsz6ucU-J1U0Lxff5hft/view?usp=sharing" target="_blank">CV</a>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        Hi! I'm Wasib Mehmood, a passionate data enthusiast with a keen interest in data science, analytics, and problem-solving. I enjoy working on projects that turn raw data into actionable insights. My goal is to leverage data to make impactful decisions and drive innovation.
+      </p>
+    </section>
+    <section id="education">
+      <h2>Education</h2>
+      <div class="education-card">
+        <strong>Bachelor of Science in Computer Science</strong><br>
+        COMSATS University<br>
+        Expected Graduation: <span id="gradYear">2026</span><br>
+        CGPA: <span id="cgpa">3.6</span>
+        <div class="edu-details">
+          <div class="edu-detail">
+            <div class="number" id="cgpaCounter">0.00</div>
+            <div class="label">Current CGPA</div>
+          </div>
+          <div class="edu-detail">
+            <div class="number" id="gradYearCounter">2020</div>
+            <div class="label">Expected Graduation</div>
+          </div>
+        </div>
+      </div>
+      <div class="education-card">
+        <strong>Intermediate (Computer Science)</strong><br>
+        KIPS College, Lahore<br>
+        2020 – 2022<br>
+        Grade: A-
+      </div>
+    </section>
+    <section id="certifications">
+      <h2>Relevant Certifications</h2>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <strong>Foundations: Data, Data, Everywhere</strong><br>
+          Google (Coursera)<br>
+          <a href="https://www.coursera.org/account/accomplishments/verify/8P4JYI3SRGQT" target="_blank">View Certificate</a>
+        </div>
+        <div class="cert-card">
+          <strong>Preparing Data for Analysis with Microsoft Excel</strong><br>
+          Microsoft (Coursera)<br>
+          <a href="https://www.coursera.org/account/accomplishments/verify/HI6YA5OMVJP6" target="_blank">View Certificate</a>
+        </div>
+        <div class="cert-card">
+          <strong>DataCamp: Data Science Course</strong><br>
+          DataCamp<br>
+          <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/73b01d5c0a6f0c513107f265175561bc0aad7073" target="_blank">View Certificate</a>
+        </div>
+        <div class="cert-card">
+          <strong>HackerRank: SQL (Basic)</strong><br>
+          HackerRank<br>
+          <a href="https://www.hackerrank.com/certificates/814a743d26a7" target="_blank">View Certificate</a>
+        </div>
+        <div class="cert-card">
+          <strong>Consulting Virtual Experience</strong><br>
+          Accenture (Forage)<br>
+          <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/Accenture%20North%20America/hzmoNKtzvAzXsEqx8_Accenture%20North%20America_KcAZgnwFNbPCRJ7TM_1724237297774_completion_certificate.pdf" target="_blank">View Certificate</a>
+        </div>
+      </div>
+    </section>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="project-card">
+          <h3>Sales Analysis Using EXCEL, SQL, Power BI</h3>
+          <p>Analyzed sales data using Excel, SQL, and Power BI to gain insights and improve decision-making. <a href="https://github.com/WasibMehmood/FineTuned_TxT-Summarization-Model" target="_blank">View on GitHub</a></p>
+        </div>
+        <div class="project-card">
+          <h3>HealthCare Analysis (SQL)</h3>
+          <p>Analyzed healthcare datasets using SQL to uncover trends and insights. <a href="https://github.com/WasibMehmood/HeathCare_Analysis_SQL" target="_blank">View on GitHub</a></p>
+        </div>
+        <div class="project-card">
+          <h3>Hotel Booking Analysis</h3>
+          <p>Explored hotel booking data to identify patterns and improve customer experience. <a href="https://github.com/WasibMehmood/Hotel_Booking_Analysis" target="_blank">View on GitHub</a></p>
+        </div>
+        <div class="project-card">
+          <h3>Loading Datasets with Pandas</h3>
+          <p>Showcased efficient data loading and preprocessing using Python's Pandas library. <a href="https://github.com/WasibMehmood/LoadingDatasets_Pandas" target="_blank">View on GitHub</a></p>
+        </div>
+        <div class="project-card">
+          <h3>Suicide Bombing Analysis</h3>
+          <p>Performed data analysis on sucide bombing attacks in pakistan to extract meaningful insights. <a href="https://github.com/WasibMehmood/Suicide_bombing_analysis" target="_blank">View on GitHub</a></p>
+        </div>
+      </div>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact">
+        <p>Let's connect! Reach out to me on <a href="https://www.linkedin.com/in/wasib-mehmood/" target="_blank">LinkedIn</a> or check out my work on <a href="https://github.com/WasibMehmood" target="_blank">GitHub</a>.</p>
+      </div>
+    </section>
+  </main>
+  <footer style="text-align:center; padding:1.2em 0; color:#9a8c98; font-size:0.95em;">
+    &copy; 2024 Wasib Mehmood. Powered by GitHub Pages.
+  </footer>
+  <script>
+    // Dark mode toggle
+    const darkToggle = document.getElementById('darkModeToggle');
+    darkToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+      darkToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    });
+    // Set dark mode on load
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark-mode');
+      darkToggle.textContent = '☀️';
+    }
+    // Animated CGPA Counter
+    function animateCGPA() {
+      const cgpaElement = document.getElementById('cgpaCounter');
+      const targetCGPA = 3.6;
+      const duration = 2000;
+      const steps = 60;
+      const increment = targetCGPA / steps;
+      const stepDuration = duration / steps;
+      let currentValue = 0;
+      const timer = setInterval(() => {
+        currentValue += increment;
+        if (currentValue >= targetCGPA) {
+          currentValue = targetCGPA;
+          clearInterval(timer);
+        }
+        cgpaElement.textContent = currentValue.toFixed(2);
+      }, stepDuration);
+    }
+    // Animated Graduation Year Counter
+    function animateGradYear() {
+      const gradYearElement = document.getElementById('gradYearCounter');
+      const startYear = 2020;
+      const targetYear = 2026;
+      const duration = 1500;
+      const steps = targetYear - startYear;
+      const stepDuration = duration / steps;
+      let currentYear = startYear;
+      const timer = setInterval(() => {
+        currentYear++;
+        if (currentYear >= targetYear) {
+          currentYear = targetYear;
+          clearInterval(timer);
+        }
+        gradYearElement.textContent = currentYear;
+      }, stepDuration);
+    }
+    // Trigger animations when education section is visible
+    const educationSection = document.querySelector('#education');
+    if (educationSection) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCGPA();
+            animateGradYear();
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+      observer.observe(educationSection);
+    }
+  </script>
+</body>
+</html> 
